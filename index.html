@@ -1,90 +1,23 @@
-const config = {
-  type: Phaser.AUTO,
-  width: 1280,
-  height: 720,
-  physics: {
-    default: "arcade"
-  },
-  scene: [SchoolScene]
-};
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소화기관 RPG</title>
 
-new Phaser.Game(config);
+    <!-- CSS 연결 -->
+    style.css
 
+    <!-- Phaser 게임 엔진 -->
+    https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.jsscript>
+</head>
+<body>
 
-class SchoolScene extends Phaser.Scene {
-  constructor() {
-    super("SchoolScene");
-  }
+    <!-- 대화창 -->
+    <div id="dialog"></div>
 
-  preload() {
-    this.load.image("player", "assets/player.png");
-    this.load.image("teacher", "assets/teacher.png");
-  }
+    <!-- 게임 코드 -->
+    game.jsscript>
 
-  create() {
-    this.player = this.physics.add.sprite(
-      500,
-      500,
-      "player"
-    );
-
-    this.musicTeacher = this.physics.add.staticSprite(
-      700,
-      300,
-      "teacher"
-    );
-
-    this.cursors = this.input.keyboard.createCursorKeys();
-
-    this.physics.add.overlap(
-      this.player,
-      this.musicTeacher,
-      this.startConversation,
-      null,
-      this
-    );
-  }
-
-  update() {
-    const speed = 200;
-
-    this.player.setVelocity(0);
-
-    if (this.cursors.left.isDown)
-      this.player.setVelocityX(-speed);
-
-    if (this.cursors.right.isDown)
-      this.player.setVelocityX(speed);
-
-    if (this.cursors.up.isDown)
-      this.player.setVelocityY(-speed);
-
-    if (this.cursors.down.isDown)
-      this.player.setVelocityY(speed);
-  }
-
-  startConversation() {
-    showDialog(
-      "음악선생님",
-      "안녕~ 근데 아까 수학선생님이 몸이 안 좋아보이던데 교무실 가서 확인해볼래?"
-    );
-  }
-}
-
-
-function showDialog(name, text) {
-
-  const dialog = document.getElementById("dialog");
-
-  dialog.innerHTML = `
-  <h2>${name}</h2>
-  <p>${text}</p>
-  <button onclick="closeDialog()">확인</button>
-  `;
-
-  dialog.style.display = "block";
-}
-
-function closeDialog() {
-  document.getElementById("dialog").style.display = "none";
-}
+</body>
+</html>
